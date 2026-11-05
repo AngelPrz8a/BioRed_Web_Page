@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+/*
+ * Tokens de diseño BioRed.
+ * Todo en rem (base 16px): 1rem = 16px. La escala de espaciado de Tailwind
+ * (--spacing: 0.25rem) ya es rem, así que `p-4` = 1rem, `w-57.5` = 14.375rem (230px).
+ */
+@theme {
+  /* Colores (de global.css del diseño) */
+  --color-bg: #f3f6f4;
+  --color-surface: #ffffff;
+  --color-surface-subtle: #f8faf8;
+  --color-border: #dde6df;
+  --color-border-subtle: #eaf0ec;
+  --color-primary: #247858;
+  --color-primary-soft: #e7f2eb;
+  --color-primary-dark: #133d30;
+  --color-text: #203c33;
+  --color-text-muted: #6d7d75;
+  --color-danger: #a64c45;
+  --color-danger-soft: #fbf2ef;
+  --color-warning: #986919;
+  --color-warning-soft: #faf2df;
+
+  /* Tipografía */
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Escala tipográfica del diseño, en rem */
+  --text-micro: 0.625rem; /* 10px */
+  --text-caption: 0.6875rem; /* 11px */
+  --text-label: 0.8125rem; /* 13px */
+  --text-brand: 1.5625rem; /* 25px */
+
+  /* Radios */
+  --radius-brand: 0.625rem; /* 10px */
+
+  /* Alturas / anchos de layout */
+  --header-height: 5.0625rem; /* 81px */
+  --footer-height: 5.625rem; /* 90px */
+}
+
+html {
+  font-size: 100%; /* respeta la preferencia de tamaño del navegador */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  line-height: 1.45;
+}
+
+/* Foco visible consistente */
+:where(a, button):focus-visible {
+  outline: 0.125rem solid var(--color-primary);
+  outline-offset: 0.125rem;
+}
+
+/* Equivalentes de .hover-bright / .hover-dark del diseño */
+@utility hover-bright {
+  &:hover {
+    filter: brightness(1.2);
+  }
+}
+
+@utility hover-dark {
+  &:hover {
+    filter: brightness(0.85);
+  }
+}
+
+/* ---------- Modo noche ---------- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #0f1714;
+  --color-surface: #16211d;
+  --color-surface-subtle: #1b2823;
+  --color-border: #2a3a33;
+  --color-border-subtle: #22302a;
+  --color-primary: #4cb88c;
+  --color-primary-soft: #1d3a2e;
+  --color-primary-dark: #a8e0c8;
+  --color-text: #e4efe9;
+  --color-text-muted: #92a49b;
+  --color-danger: #d9857d;
+  --color-danger-soft: #3a2422;
+  --color-warning: #d9a548;
+  --color-warning-soft: #382d17;
+}
+
+/* Automático = sigue el sistema (mismos valores) */
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] {
+    color-scheme: dark;
+    --color-bg: #0f1714;
+    --color-surface: #16211d;
+    --color-surface-subtle: #1b2823;
+    --color-border: #2a3a33;
+    --color-border-subtle: #22302a;
+    --color-primary: #4cb88c;
+    --color-primary-soft: #1d3a2e;
+    --color-primary-dark: #a8e0c8;
+    --color-text: #e4efe9;
+    --color-text-muted: #92a49b;
+    --color-danger: #d9857d;
+    --color-danger-soft: #3a2422;
+    --color-warning: #d9a548;
+    --color-warning-soft: #382d17;
+  }
+}
